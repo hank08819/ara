@@ -3,12 +3,13 @@
 **MemCert: Label-Free Certification of Compressed Memory for Enterprise Financial AI Agents**
 Henry Han, Data Science and AI Innovation Laboratory, Baylor University · [Henry_Han@baylor.edu](mailto:Henry_Han@baylor.edu)
 
-Two manuscripts under review, version of 2026-10-31. Together they supply the measure, the evidence and the repair method on which the proposal builds.
+Three manuscripts under review, version of 2026-10-31. Together they supply the measure, the evidence, the repair method and the memory map on which the proposal builds.
 
 | | Paper | PDF |
 |---|---|---|
 | 1 | H. Han. **Quantifying Local and Global Fidelity of Nonlinear Embeddings.** Manuscript under review, 2026. | [PDF](Han2026_Quantifying_Local_Global_Fidelity_Nonlinear_Embeddings.pdf) |
 | 2 | H. Han. **Enhancing Local and Global Structure in Compressed AI Agent Memory.** Manuscript under review, 2026. | [PDF](Han2026_Enhancing_Local_Global_Structure_Compressed_Agent_Memory.pdf) |
+| 3 | H. Han, L. Niu, D. Li, J. Wang. **Differential Rank Preservation Manifold Learning.** Manuscript under review, 2026. | [PDF](Han2026_Differential_Rank_Preservation_Manifold_Learning.pdf) |
 
 ## What each paper does for the proposal
 
@@ -19,6 +20,7 @@ An AI agent stores what it reads as embedding vectors and compresses them at sca
 | **Aim 1.** Measure what each compression option keeps | Paper 1 defines the two scores: local fidelity *L* at 10 neighbors and global fidelity *G* over 30 to 50 percent of the data. Both are label-free and come from one chance-corrected curve. *G* agrees with established global scores (0.89 and 0.96 over 156 maps of twelve datasets), and 2,000 points estimate it. |
 | **Aim 2.** Test which agent operations each score predicts | Paper 2 shows that retrieval follows *L* (partial rank correlation 0.83 to 0.99 given *G*). With the three retrieval-tuned encoders, consolidation and deletion follow *G* (0.55 to 0.93 given *L*). |
 | **Aim 3.** Certify a memory and repair what the certificate flags | Paper 1 gives the LG reversal test, which decides with a block-jackknife *p*-value whether one map is more local and another more global. Paper 2 gives the repair: locality-aware quantization (LAQ) learns the codebooks of an OPQ index and keeps its bytes, rotation and search. LAQ raises *G* in all 40 held-out runs, Amazon Titan Text Embeddings V2 included. |
+| **Aim 3.** Show a firm its memory | Paper 3 gives SR-tSNE, the map MemCert draws of a memory. It keeps each item's neighbors in their original order, so the items shown next to a passage are the ones a search would return first. |
 
 ## Paper 1. Quantifying Local and Global Fidelity of Nonlinear Embeddings
 
@@ -43,6 +45,14 @@ The paper proves that the loss at every neighborhood size is bounded by the rate
 **Figure 3 (Tables 2 and 3 of Paper 2).** With Amazon Titan Text Embeddings V2, LAQ keeps the highest global fidelity of seven quantizers of the same size. Held-out annual reports of Multi-Doc-2025 at 128 bytes per passage. (a) *G* and *L* of each quantizer, means over three splits; RaBitQ uses 136 bytes, and ScaNN reports *L* only. (b) From its OPQ start, LAQ raises *G* from 0.656 to 0.692 and *L* from 0.790 to 0.798, in each of four splits.
 
 **At a million passages (result after the manuscript).** On one million MS MARCO passages at 96 bytes, with LAQ trained on 100,000 other passages, *G* rises from 0.774 (OPQ) to 0.784 to 0.785 in all three seeds, with *L* and recall@10 within 0.002 of OPQ.
+
+## Paper 3. Differential Rank Preservation Manifold Learning
+
+t-SNE and UMAP keep each point's neighbors but not their order. SR-tSNE adds a differentiable rank term to the t-SNE loss, so a point's true neighbors outrank intruders and keep their original order. Ordinal DLP (O-DLP) credits a neighbor only when it returns at its own rank. Across eight benchmarks of image, text, speech, remote-sensing and single-cell data, SR-tSNE outperforms 12 baselines in rank preservation and neighborhood overlap, gives the best label transfer on seven vision datasets, and ranks first in 17 of 18 single-cell dataset and metric combinations.
+
+![SR-tSNE retrieval](fig_paper3_srtsne_retrieval.png)
+
+**Figure 4 (Fig. 6 of Paper 3).** SR-tSNE returns each query's nearest neighbors at their own rank, where other methods introduce ordinal and class errors. Top three embedded neighbors of queries from (a) MNIST, (b) CIFAR-10 and (c) Fashion-MNIST. Badges give the neighbor's rank in the original space within the query's top 30; frames show the rank displacement (dark green: exact; pale green: off by one; orange: off by two or more; red: outside the top 30). Class labels turn red on a class mismatch.
 
 ## Contact
 
