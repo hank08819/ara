@@ -36,6 +36,14 @@ The paper proves that the loss at every neighborhood size is bounded by the rate
 
 **Figure 2 (Fig. 9 of Paper 2).** LAQ raises the far end of every held-out memory by lowering rank violations, and the gain reaches the operations that depend on the far end. (a) Profiles of OPQ and LAQ with Amazon Titan V2; the gray band is where *G* is measured. (b) The gain grows toward the far end for all four encoders. (c) The bound of Theorem 1 holds at every point. (d) LAQ lowers the rate of rank violations. (e) *G* rises in all 40 held-out runs. (f) Change in agreement for each agent operation; on the right, the number of runs in which LAQ is higher. (g) LAQ (black) and six other quantizers at the same size. (h) The lowest theme agreement rises from 0.80 to 0.89.
 
+### Amazon Titan Text Embeddings V2
+
+![LAQ with Amazon Titan Text Embeddings V2](fig_paper2_titan_v2.png)
+
+**Figure 3 (Tables 2 and 3 of Paper 2).** With Amazon Titan Text Embeddings V2, LAQ keeps the highest global fidelity of seven quantizers of the same size. Held-out annual reports of Multi-Doc-2025 at 128 bytes per passage. (a) *G* and *L* of each quantizer, means over three splits; RaBitQ uses 136 bytes, and ScaNN reports *L* only. (b) From its OPQ start, LAQ raises *G* from 0.656 to 0.692 and *L* from 0.790 to 0.798, in each of four splits.
+
+**At a million passages (result after the manuscript).** On one million MS MARCO passages at 96 bytes, with LAQ trained on 100,000 other passages, *G* rises from 0.774 (OPQ) to 0.784 to 0.785 in all three seeds, with *L* and recall@10 within 0.002 of OPQ.
+
 ## Contact
 
 Henry Han, Baylor University · [Henry_Han@baylor.edu](mailto:Henry_Han@baylor.edu)
