@@ -68,7 +68,7 @@ t-SNE and UMAP keep each point's neighbors but not their order. SR-tSNE adds a d
 
 ![SR-tSNE map of a compressed-memory audit](fig_memcert_srtsne_map.png)
 
-**Figure 6 (Figure 1 of the proposal).** The memory map MemCert draws with SR-tSNE: 8,356 FinQA passages of 106 S&P 500 companies in 11 theme colors. A recall check sees one passage's 10 nearest neighbors (*L*, green) but misses a whole company (*E*, gold) and themes shared across companies (*G*, white).
+**Figure 6 (Figure 1 of the proposal).** The memory map MemCert draws with SR-tSNE: 8,356 FinQA passages of 106 S&P 500 companies in 11 theme colors. A recall check sees one passage's 10 nearest neighbors (*L*) but misses a whole company (*E*) and themes shared across companies (*G*). Under rescored binary codes, PNC (gold) keeps *L* = 0.96 yet loses 17 of its 105 passages (red ×).
 
 ## Contact
 
